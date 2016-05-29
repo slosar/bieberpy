@@ -46,7 +46,8 @@ fmin,fmax=faxis[0],faxis[-1]
 tmin,tmax=taxis[0], taxis[-1]
 print tmax-tmin
 print o.pmin, o.pmax
-plt.imshow(pdata,interpolation='nearest',extent=(fmin,fmax,0,(tmax-tmin)/1e6),
+plt.figure(figsize=(20,20))
+plt.imshow(pdata,interpolation='nearest',extent=(fmin,fmax,0,(tmax-tmin)/1e3),
            vmin=o.pmin, vmax=o.pmax,aspect='auto')
 plt.ylabel('t[s]')
 plt.xlabel('f[MHz]')

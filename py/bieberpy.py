@@ -90,6 +90,10 @@ class SHTrace(object):
             ## of boxcar average than this
             Nf=len(freqs)/freq_avg
             Nt=len(tstamps)/time_avg
+            if (Nf*freq_avg<len(freqs)):
+                Nf+=1
+            if (Nt*time_avg<len(tstamps)):
+                Nt+=1
             nfreqs=np.array([freqs[i*freq_avg:(i+1)*freq_avg].mean() for i in range(Nf)])
             ntstamps=np.array([tstamps[i*time_avg:(i+1)*time_avg].mean() for i in range(Nt)])
             ndata=np.array([[ data[i*time_avg:(i+1)*time_avg,j*freq_avg:(j+1)*freq_avg].mean() for j in range(Nf)]
