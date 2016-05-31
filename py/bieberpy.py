@@ -43,9 +43,9 @@ class SHTrace(object):
         Given filename, read the file and initialize the object
         """
         f=open(filename)
-        head=np.fromfile(f,self._head_dt,count=1)
-        for n in head.dtype.names:
-            self.__dict__.update({n:head[n][0]})
+        self.header_arr=np.fromfile(f,self._head_dt,count=1)
+        for n in self.header_arr.dtype.names:
+            self.__dict__.update({n:self.header_arr[n][0]})
         self.Ns=self.count
         # now read the rest of the data
         rec_desc=[('time','u8'),('min_trace','f4',self.trace_len),('max_trace','f4',self.trace_len)]
